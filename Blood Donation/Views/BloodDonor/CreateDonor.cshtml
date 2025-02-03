@@ -1,0 +1,146 @@
+﻿@model Blood_Donation.Models.RegisterDonor
+@{
+    ViewData["Title"] = "Registration Page";
+}
+@{
+    Layout = "_Layout";
+}
+
+<!-- Google Fonts for Custom Font -->
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-header {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column; /* Align label and input in a column */
+        }
+
+            .form-group label {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                border-radius: 0.375rem; /* Rounded corners */
+                width: 100%; /* Ensure input fields take up full width */
+                padding: 0.75rem;
+            }
+
+            .form-group span {
+                margin-top: 0.5rem;
+                color: #dc3545; /* Red for error messages */
+                font-size: 0.9rem;
+            }
+
+        .btn-lg {
+            padding: 0.5rem 2rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: #dc3545; /* Red for Blood Donation */
+            border-color: #dc3545;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border-color: #c82333;
+            }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<!-- Page Header with Custom Style -->
+<h1 class="form-header text-center">Registration for Blood Donation</h1>
+
+<!-- Registration Form -->
+<form asp-action="CreateDonor" method="Post" class="form-container">
+    <!-- First Name and Last Name in One Row -->
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">First Name<span class="text-danger">*</span></label>
+            <input asp-for="FirstName" class="form-control" placeholder="Enter First Name" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">Last Name<span class="text-danger">*</span></label>
+            <input asp-for="LastName" class="form-control" placeholder="Enter Last Name" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+    </div>
+
+    <!-- Age and Email in One Row -->
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="Age" class="control-label">Age<span class="text-danger">*</span></label>
+            <input asp-for="Age" class="form-control" type="number" placeholder="Enter Age" />
+            <span asp-validation-for="Age"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">E-Mail Address<span class="text-danger">*</span></label>
+            <input asp-for="Email" class="form-control" type="email" placeholder="Enter Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+    </div>
+
+    <!-- Blood Group and Any Disease in One Row -->
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="BloodGroup" class="control-label">Blood Group<span class="text-danger">*</span></label>
+            <select asp-for="BloodGroup" class="form-control" asp-items="@(ViewData["BloodGroups"] as SelectList)">
+                <option value="">-- Select --</option>
+            </select>
+            <span asp-validation-for="BloodGroup"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AnyDisease" class="control-label">Specify if Any Disease</label>
+            <input asp-for="AnyDisease" class="form-control" placeholder="Enter Any Disease" />
+            @* <span asp-validation-for="AnyDisease"></span> *@
+        </div>
+    </div>
+
+    <!-- City Field -->
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="City" class="control-label">City<span class="text-danger">*</span></label>
+            <input asp-for="City" class="form-control" placeholder="Enter City" />
+            <span asp-validation-for="City"></span>
+        </div>
+    </div>
+
+    <!-- Form Buttons -->
+    <div class="form-footer d-flex justify-content-between align-items-center" >
+        <button style="margin-right: 2px;" type="submit" class="btn btn-primary btn-lg">Create Patient</button>
+        <a href="@Url.Action("GetDonor", "BloodDonor")" class="btn btn-secondary btn-lg mt-3" style="margin-right: 2px;">Back to List</a>
+    </div>
+
+</form>

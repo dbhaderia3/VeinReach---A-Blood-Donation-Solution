@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container my-5">
+    <div class="text-center">
+        <h1 class="display-4 font-weight-bold text-primary mb-4">Welcome To Blood Donation Drive</h1>
+        <p class="lead">
+            Please <a href="/BloodDonor/CreateDonor" class="nav-link text-dark" id="registerLink">Register Now</a> to participate.
+        </p>
+        <div class="container d-flex justify-content-end">
+            <a href="/BloodDonor/GetDonor" class="text-primary">Find Blood Donor</a>
+        </div>
+    </div>
+    
+</div>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light background color */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px; /* Center content and restrict width */
+    }
+
+    .text-center h1 {
+        font-size: 3rem;
+        color: #007bff; /* Blue color for the title */
+    }
+
+    .text-center p {
+        font-size: 1.25rem;
+        color: #343a40; /* Dark gray for the text */
+        font-weight: 500;
+    }
+
+    #registerLink {
+        color: #007bff; /* Default link color */
+        font-weight: 600; /* Bold the link */
+        text-decoration: none;
+    }
+
+        #registerLink:hover {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+
+    /* Add a subtle shadow around the content */
+    .text-center {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
