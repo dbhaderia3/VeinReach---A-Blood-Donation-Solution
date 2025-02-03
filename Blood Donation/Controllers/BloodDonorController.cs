@@ -31,7 +31,7 @@ namespace Blood_Donation.Controllers
                 GetBloodGroup();
                 bool isConnected = _dbService.ConnectionMethod(_configuration);
                 ViewBag.ConnectionStatus = isConnected ? "Connected to Database!" : "Failed to Connect.";
-                //In case ViewBag is not set due to some issue, set a default message
+                //In case ViewBag is not set due to some issue, set a default messag
                 if (ViewBag.ConnectionStatus == null)
                 {
                     ViewBag.ConnectionStatus = "Connection status is unknown.";
